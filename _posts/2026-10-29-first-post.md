@@ -1,6 +1,6 @@
 ---
 title: A place for ideas in progress
-date: 2026-10-30
+date: 2026-10-29
 description: "a notebook for following good questions across science, business, and everyday life."
 subtitle: Following good questions, wherever they lead.
 ---
