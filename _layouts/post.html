@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="page">
+  <nav class="article-nav" aria-label="Home"><a href="{{ '/' | relative_url }}">Borked</a></nav>
+  <main id="main">
+    <article>
+      <header class="article-header">
+        {% if page.starter %}<span class="starter-label">Starter note</span>{% endif %}
+        <h1>{{ page.title | escape }}</h1>
+        {% if page.subtitle %}<p class="article-subtitle">{{ page.subtitle | escape }}</p>{% endif %}
+        <p class="author">{{ site.author.name }}</p>
+        <p class="article-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+      </header>
+      <div class="prose">
+        {{ content }}
+      </div>
+      <p class="end-mark" aria-hidden="true">* * *</p>
+    </article>
+    <a class="return-link" href="{{ '/#writing' | relative_url }}">← All writing</a>
+  </main>
+  {% include footer.html %}
+</div>

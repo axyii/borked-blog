@@ -1,0 +1,8 @@
+.DS_Store
+Thumbs.db
+.openai/
+.preview/
+dist/
+__pycache__/
+*.zip
+*.bundle

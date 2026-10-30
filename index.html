@@ -1,0 +1,40 @@
+---
+layout: default
+full_title: Borked — Tanush Vaddireddy
+description: Notes on everything I like.
+---
+<div class="page">
+  <main id="main">
+    <header class="masthead">
+      <h1>Borked</h1>
+      <p class="subtitle">Notes on everything I like.</p>
+      <p class="author">{{ site.author.name }}</p>
+      <p class="place">{{ site.author.location }}</p>
+      <nav class="home-nav" aria-label="Main navigation">
+        <a href="#writing">Writing</a>
+        <a href="{{ '/about.html' | relative_url }}">About</a>
+      </nav>
+    </header>
+    <div class="divider" aria-hidden="true"></div>
+    <section class="writing" id="writing" aria-labelledby="writing-title">
+      <h2 id="writing-title">Writing</h2>
+      {% if site.posts.size > 0 %}
+      <ol class="essay-list">
+        {% for post in site.posts %}
+        <li>
+          <div class="essay-heading">
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+            <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+          </div>
+          {% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}
+          {% if post.starter %}<span class="starter-label">Starter note</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p class="empty-state">The first note is still being written.</p>
+      {% endif %}
+    </section>
+  </main>
+  {% include footer.html %}
+</div>

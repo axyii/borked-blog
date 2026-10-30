@@ -1,0 +1,20 @@
+title: Borked
+description: Notes on everything I like.
+url: https://borked.xyz
+baseurl: ""
+timezone: America/New_York
+
+author:
+  name: Tanush Vaddireddy
+  location: New York
+
+permalink: /posts/:title.html
+markdown: kramdown
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      og_type: article

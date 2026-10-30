@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% capture document_title %}{% if page.full_title %}{{ page.full_title }}{% elsif page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}{% endcapture %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  {% if page.noindex %}<meta name="robots" content="noindex">{% endif %}
+  <meta id="theme-color" name="theme-color" content="#ffffff">
+  <title>{{ document_title | strip | escape }}</title>
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:title" content="{{ document_title | strip | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{{ page.og_type | default: 'website' }}">
+  <link rel="icon" href="{{ '/assets/favicon.png' | relative_url }}" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="{{ '/assets/favicon.png' | relative_url }}">
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var savedTheme = localStorage.getItem('borked-theme');
+        var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme;
+        document.documentElement.dataset.theme = theme;
+        document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#171717' : '#ffffff';
+      } catch (error) {
+        // The CSS system-theme fallback still works when storage is unavailable.
+      }
+    }());
+  </script>
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <button class="theme-toggle js-only" type="button" data-theme-toggle aria-label="Switch to dark theme">
+    <span data-theme-label aria-hidden="true">Dark</span>
+  </button>
+  {{ content }}
+  <script src="{{ '/assets/theme.js' | relative_url }}"></script>
+</body>
+</html>
